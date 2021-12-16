@@ -1,4 +1,6 @@
 import collections
+import time
+
 
 class Solution:
 
@@ -7,7 +9,7 @@ class Solution:
         self.insertion_rules = {}
 
     def read_input(self):
-        input_file = open("input_014_0.txt", "r")
+        input_file = open("input_014_1.txt", "r")
         i = 0
         for input_line in input_file:
             input_line = input_line.strip()
@@ -22,10 +24,9 @@ class Solution:
         input_file.close()
 
     def calculate(self):
-        self.template = self.template[:2]
         print("Template:      {}".format(self.template))
 
-        for step_number in range(1, 41):
+        for step_number in range(1, 11):
             new_template = []
             for i in range(len(self.template)-1):
                 new_template.append(self.template[i])
@@ -35,14 +36,16 @@ class Solution:
             print("After step {:2}: {}".format(step_number, self.template if len(self.template) < 97 else len(self.template)))
 
         frequency = collections.Counter(self.template)
-        print("Frequency:")
-        for polymer in sorted(frequency.keys()):
-            print("{}: {}".format(polymer, frequency[polymer]))
-        return max([v for k,v in frequency.items()]) - min([v for k,v in frequency.items()])
+
+        return max([v for k, v in frequency.items()]) - min([v for k, v in frequency.items()])
 
     def solve(self):
         self.read_input()
-        return self.calculate()
+        start = time.time_ns()
+        calculate = self.calculate()
+        end = time.time_ns() - start
+        print(end)
+        return calculate
 
 
 if __name__ == "__main__":
