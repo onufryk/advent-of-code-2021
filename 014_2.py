@@ -24,38 +24,8 @@ class Solution:
 
         input_file.close()
 
-    def expand(self, pair, level):
-        print("{}. {}".format(level, pair))
-        new_pair = [self.insertion_rules[''.join(pair)], pair[-1]]
-        print("New  pair {}".format(new_pair))
-
-    def count(self, sequence):
-        if len(sequence) < 2:
-            return
-        print("{}".format(sequence))
-        prefix = sequence[:-1]
-        last_pair = sequence[-2:]
-        print("Prefix {}".format(prefix))
-        print("Last pair {}".format(last_pair))
-
-        self.expand(last_pair, 0)
-
-        self.count(sequence[:-1])
-
     def calculate(self):
-        current_template = list(self.template)
-
-        self.count(current_template)
-
-        # for i in range(5):
-        #     print("Template:      {}".format(current_template))
-        #     prefix = current_template[:-1]
-        #     last_pair = current_template[-2:]
-        #     print("Prefix {}".format(prefix))
-        #     print("Last pair {}".format(last_pair))
-        #
-        #     current_template.pop()
-        #     current_template += new_pair
+        return 0
 
 
     def solve(self):
