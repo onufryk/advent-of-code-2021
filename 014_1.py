@@ -22,6 +22,7 @@ class Solution:
         input_file.close()
 
     def calculate(self):
+        self.template = self.template[:2]
         print("Template:      {}".format(self.template))
 
         for step_number in range(1, 41):
@@ -32,11 +33,6 @@ class Solution:
             new_template.append(self.template[-1])
             self.template = ''.join(new_template)
             print("After step {:2}: {}".format(step_number, self.template if len(self.template) < 97 else len(self.template)))
-
-        pairs = collections.defaultdict(int)
-        for i in range(len(self.template)-1):
-            pairs[self.template[i:i+2]] += 1
-        print("Pairs:      {}".format(pairs))
 
         frequency = collections.Counter(self.template)
         print("Frequency:")
